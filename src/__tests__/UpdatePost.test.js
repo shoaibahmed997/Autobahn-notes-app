@@ -2,7 +2,7 @@
 import {screen,render, fireEvent} from '../utils/test.utils'
 import { createMemoryHistory } from 'history'
 import UpdatePost from '../Components/UpdatePost'
-import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import Dashboard from '../Pages/Dashboard'
 import { act } from 'react-dom/test-utils'
 

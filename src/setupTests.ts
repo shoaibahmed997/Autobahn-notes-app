@@ -22,15 +22,21 @@ const AddnewPost = rest.post("https://jsonplaceholder.typicode.com/posts",(req,r
     )
 })
 
-// const UpdatePost = rest.put(`https://jsonplaceholder.typicode.com/posts/${post.id}`,(req,res,ctx)=>{
 const UpdatePost = rest.put(`https://jsonplaceholder.typicode.com/posts/1`,(req,res,ctx)=>{
     return res(
         ctx.status(200),
         ctx.json([{id:1,userId:1,title:"Hello",body:"Hello World"}])
     )
 })
+
+const DeletePost = rest.delete("https://jsonplaceholder.typicode.com/posts/1",(req,res,ctx)=>{
+    return res(
+        ctx.status(200),
+        ctx.json({})
+    )
+})
     
-const handler = [getposts,AddnewPost,UpdatePost]
+const handler = [getposts,AddnewPost,UpdatePost,DeletePost]
 // server setup
 const server = setupServer(...handler)
 
