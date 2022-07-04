@@ -14,7 +14,7 @@ function App() {
       <Routes>
           <Route path='/' element={<Layout />}>
 
-              <Route path='/' element={<Dashboard />} />
+              <Route index element={<Dashboard />} />
               <Route path='dashboard' element={<Dashboard />} />
               <Route path='add' element={<AddPost />} />
               <Route path='posts/:id' element={<SinglePost />} />

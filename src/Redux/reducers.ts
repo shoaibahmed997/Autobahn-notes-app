@@ -16,12 +16,12 @@ type initialState ={
     status:string,
     error : string
 }
-type postingState ={
+type postingState = {
     error :string
     status:string
 }
 
-const initialPostState :initialState= {
+export const initialPostState :initialState= {
     posts :[],
     status:"idle",
     error:""

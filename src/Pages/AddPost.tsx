@@ -24,6 +24,7 @@ const AddPost = () => {
   };
   
 
+  
   const postdata:(title:string,body:string)=>void = (title:string,body:string)=>{
       try {
         dispatch(AddnewPost({title,body})).unwrap()
@@ -41,11 +42,12 @@ const AddPost = () => {
     <div className='AddPost'>
         <Paper elevation={8}>
       <h1>Add a New Post</h1>
-      <form onSubmit={handleSubmit((data)=>{
+      <form className='addpost-form' onSubmit={handleSubmit((data)=>{
           postdata(data.title,data.body)
-      })} className='addpost-form'>
-          <TextField {...register("title",{required:"Title is Required",minLength:{value:3,message:"Minimum characters to be required are 3"}})} id="outlined-basic" label="Title" variant="outlined" helperText={errors.title?.message} />
-          <TextField multiline rows={3} {...register("body",{required:"Body is Required",minLength:{value:5,message:"Minimum characters to be required are 5"}})} id="outlined-basic" label="Body" variant="outlined" helperText={errors.body?.message} />
+      })}>
+
+          <TextField data-testid='title' {...register("title",{required:"Title is Required",minLength:{value:3,message:"Minimum characters to be required are 3"}})} id="outlined-basic-title" label="Title" variant="outlined" helperText={errors.title?.message} />
+          <TextField data-testid='body' multiline rows={3} {...register("body",{required:"Body is Required",minLength:{value:5,message:"Minimum characters to be required are 5"}})} id="outlined-basic-body" label="Body" variant="outlined" helperText={errors.body?.message} />
           
           {addStatus === 'loading' ? <CircularProgress /> :
           <Button type="submit" variant="contained">Add Post</Button>
@@ -55,7 +57,7 @@ const AddPost = () => {
         {
           addStatus === 'success' && 
           <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          <Alert data-testid="alert" onClose={handleClose} severity="success" sx={{ width: '100%' }}>
             Post Added Successfully
           </Alert>
         </Snackbar> }

@@ -13,8 +13,8 @@ const UpdatePost:React.FC = () => {
     let navigate = useNavigate()
     const {register,reset,formState:{errors},handleSubmit} = useForm({
         defaultValues:{
-            title:post.title,
-            body:post.body,
+            title:post?.title,
+            body:post?.body,
         }
     })
     let dispatch = useAppDispatch()
@@ -31,12 +31,12 @@ const UpdatePost:React.FC = () => {
   return (
     <div className='AddPost'>
         <Paper elevation={8}>
-      <h1>Update Post</h1>
+        <h1>Update Post</h1>
       <form onSubmit={handleSubmit((data)=>{
           PatchData(data.title,data.body)
       })} className='addpost-form'>
-          <TextField {...register("title",{required:"Title is Required",minLength:{value:3,message:"Minimum characters to be required are 3"}})} id="outlined-basic" label="Title" variant="outlined" helperText={errors.title?.message} />
-          <TextField multiline rows={3} {...register("body",{required:"Body is Required",minLength:{value:5,message:"Minimum characters to be required are 5"}})} id="outlined-basic" label="Body" variant="outlined" helperText={errors.body?.message} />
+          <TextField {...register("title",{required:"Title is Required",minLength:{value:3,message:"Minimum characters to be required are 3"}})} id="outlined-basic-title" label="Title" variant="outlined" helperText={errors.title?.message} />
+          <TextField multiline rows={3} {...register("body",{required:"Body is Required",minLength:{value:5,message:"Minimum characters to be required are 5"}})} id="outlined-basic-body" label="Body" variant="outlined" helperText={errors.body?.message} />
           
           <Button type="submit" variant="contained">Update</Button>
           
